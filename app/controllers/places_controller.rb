@@ -7,7 +7,7 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find_by({ "id" => params["id"] })
     if @current_user
-        @entries = Entry.where({ "place_id" => @place["id"] })
+      @entries = Entry.where({ "place_id" => @place["id"] })
     else
       flash["notice"] = "Please login first"
       redirect_to "/login"
@@ -20,7 +20,7 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new
-    @place["name"] = params["name"]
+    @place["name"] = params["place"]["name"]
     @place.save
     redirect_to "/places"
   end

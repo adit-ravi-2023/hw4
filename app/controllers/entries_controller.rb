@@ -7,11 +7,11 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new
-    @entry["title"] = params["title"]
-    @entry["description"] = params["description"]
-    @entry["occurred_on"] = params["occurred_on"]
-    @entry["place_id"] = params["place_id"]
-    @entry.uploaded_image.attach(params["post"]["uploaded_image"])
+    @entry["title"] = params["entry"]["title"]
+    @entry["description"] = params["entry"]["description"]
+    @entry["occurred_on"] = params["entry"]["occurred_on"]
+    @entry["place_id"] = params["entry"]["place_id"]
+    @entry.uploaded_image.attach(params["entry"]["uploaded_image"])
     @entry.save
     redirect_to "/places/#{@entry["place_id"]}"
   end
